@@ -9,17 +9,14 @@ export declare type OmitUndefined<T> = Pick<
 
 export declare type Actions<
   K extends keyof Micra.Actions = keyof Micra.Actions
-  > = K extends any
+> = K extends any
   ? OmitUndefined<{ type: K; payload: Micra.Actions[K] }>
   : never;
 
 export declare type GlobalState = Micra.State;
 
 export interface GlobalStore extends Store<Micra.State, Actions> {
-  dispatch: ThunkDispatch<
-    GlobalState,
-    any,
-    Actions>;
+  dispatch: ThunkDispatch<GlobalState, any, Actions>;
   add(key: keyof GlobalState, reducer: ReduxReducer): GlobalStore;
 }
 

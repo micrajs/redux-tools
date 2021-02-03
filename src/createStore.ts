@@ -12,7 +12,7 @@ export const createStore = (
   initialReducers: ReducersMapObject = {},
   middlewares: Middleware[] = [],
 ): GlobalStore => {
-  let reducers: ReducersMapObject = { ...initialReducers };
+  const reducers: ReducersMapObject = { ...initialReducers };
   let combinedReducers = combineReducers<GlobalState, Actions>(reducers);
 
   function reduce(state: GlobalState, action: Actions) {
@@ -27,7 +27,10 @@ export const createStore = (
     composeWithDevTools(applyMiddleware(...middlewares)),
   ) as GlobalStore;
 
-  store.add = function add<K extends keyof GlobalState>(key: K, reducer: Reducer<GlobalState[K], Actions>) {
+  store.add = function add<K extends keyof GlobalState>(
+    key: K,
+    reducer: Reducer<GlobalState[K], Actions>,
+  ) {
     if (!key || reducers[key]) {
       return store;
     }

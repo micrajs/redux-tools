@@ -7,5 +7,5 @@ export const createReducer = <S>(
 ): Reducer<S, Actions> => (state: S = initialState, action: Actions): S =>
   action.type === '*/reset'
     ? initialState
-    : /* @ts-ignore */
+    : /* @ts-expect-error Action types can be dynamically defined */
       (actionHandlers[action.type] ?? identity)(state, action);

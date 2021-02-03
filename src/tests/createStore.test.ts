@@ -50,7 +50,11 @@ describe('createStore tests', () => {
     const testReducer = createReducer(testInitialState, {
       [testAction.type]: testMockReducer,
     });
-    const store = createStore({ test: testInitialState }, { test: testReducer }, [thunk]);
+    const store = createStore(
+      { test: testInitialState },
+      { test: testReducer },
+      [thunk],
+    );
 
     store.dispatch(async (dispatch) => {
       dispatch(action);
