@@ -27,7 +27,7 @@ export const createStore = (
     composeWithDevTools(applyMiddleware(...middlewares)),
   ) as GlobalStore;
 
-  store.add = function add(key: keyof GlobalState, reducer: Reducer) {
+  store.add = function add<K extends keyof GlobalState>(key: K, reducer: Reducer<GlobalState[K], Actions>) {
     if (!key || reducers[key]) {
       return store;
     }
