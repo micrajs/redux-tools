@@ -7,7 +7,8 @@
   "module": ".micra/index.js",
   "types": ".micra/index.d.ts",
   "files": [
-    ".micra/**/*"
+    ".micra/**/*",
+    "redux-tools.d.ts"
   ],
   "scripts": {
     "build": "yarn rimraf .micra && yarn rollup -c .config/build/rollup.config.js && node .config/build/copyDTs",
