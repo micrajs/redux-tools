@@ -1,6 +1,6 @@
 import type { ActionCreator } from './types';
 
-export const createAction = <A extends keyof Micra.Actions>(
+export const createAction = <A extends keyof Application.Actions>(
   type: A,
 ): ActionCreator<A> => {
   const actionCreator = function (...[payload]) {

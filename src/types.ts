@@ -8,14 +8,14 @@ export declare type OmitUndefined<T> = Pick<
 >;
 
 export declare type Actions<
-  K extends keyof Micra.Actions = keyof Micra.Actions
+  K extends keyof Application.Actions = keyof Application.Actions
 > = K extends any
-  ? OmitUndefined<{ type: K; payload: Micra.Actions[K] }>
+  ? OmitUndefined<{ type: K; payload: Application.Actions[K] }>
   : never;
 
-export declare type GlobalState = Micra.State;
+export declare type GlobalState = Application.State;
 
-export interface GlobalStore extends Store<Micra.State, Actions> {
+export interface GlobalStore extends Store<Application.State, Actions> {
   dispatch: ThunkDispatch<GlobalState, any, Actions>;
   add(key: keyof GlobalState, reducer: ReduxReducer): GlobalStore;
 }
@@ -38,13 +38,13 @@ export declare type ActionHandlers<S, A extends Actions> = A extends any
   ? Partial<Record<A['type'], Reducer<S, A>>>
   : never;
 
-export declare type ActionCreator<A extends keyof Micra.Actions> = {
+export declare type ActionCreator<A extends keyof Application.Actions> = {
   (
-    ...payload: Micra.Actions[A] extends undefined
+    ...payload: Application.Actions[A] extends undefined
       ? []
-      : [payload: Micra.Actions[A]]
-  ): { type: A; payload: Micra.Actions[A] };
+      : [payload: Application.Actions[A]]
+  ): { type: A; payload: Application.Actions[A] };
   type: A;
 };
 
-export declare type ActionTypes = keyof Micra.Actions;
+export declare type ActionTypes = keyof Application.Actions;

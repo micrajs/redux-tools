@@ -1,4 +1,4 @@
-declare namespace Micra {
+declare namespace Application {
   interface State {
     //
   }
